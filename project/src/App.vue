@@ -10,17 +10,24 @@
   export default {
     name: 'app',
     components: {
-      parallaxStars
+      parallaxStars,
     }
   }
 </script>
 
 <style>
+
+  @import url('https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap');
+
   #app {
+    font-size: 1.6rem;
+    font-family: 'Julius Sans One', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    /*color: #2c3e50;*/
-    transition: 0.5s;
+    color: #ffffff;
+    /*transition: 0.5s;*/
+    letter-spacing: 2px;
   }
+
 </style>

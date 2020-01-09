@@ -1,13 +1,19 @@
 <template>
     <div id="main">
+        <navigationBar></navigationBar>
         <div class="grid-container">
         </div>
     </div>
 </template>
 
 <script>
+    import navigationBar from './navigationBar';
     export default {
         name: "parallaxStars",
+        components: {
+            navigationBar
+        },
+
         methods: {
             createStars(quantity) {
                 for (let i = 0; i < quantity; i++) {
@@ -42,7 +48,7 @@
         margin-right: auto;
         overflow-x: hidden;
         overflow-y: hidden;
-        background: radial-gradient(ellipse at bottom, #013155 0%, #01162E 100%);
+        background: radial-gradient(ellipse at bottom, #012950 0%, #000000 100%);
     }
 
     .grid-container {
