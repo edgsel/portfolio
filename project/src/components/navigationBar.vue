@@ -1,10 +1,10 @@
 <template>
     <div id="nav">
         <ul class="navBar">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#whoAmI">WHO AM I?</a></li>
-            <li><a href="#hobbies">HOBBIES</a></li>
-            <li><a href="#contactMe">CONTACT ME</a></li>
+            <li><a class="bar active" href="#home">HOME</a></li>
+            <li><a class="bar" href="#whoAmI">WHO AM I?</a></li>
+            <li><a class="bar" href="#hobbies">HOBBIES</a></li>
+            <li><a class="bar" href="#contactMe">CONTACT ME</a></li>
         </ul>
     </div>
 </template>
@@ -16,7 +16,13 @@
         name: "navigationBar",
 
         mounted() {
-            $(".navBar").delay(1000).animate({right: '7px', opacity: '1'}, 1000);
+            $(".navBar").delay(800).animate({right: '7px', opacity: '1'}, 1000);
+            /* not implemented yet */
+            // setTimeout(function () {
+            //     $(".active").after(function () {
+            //         $(".active").animate({width: "100%"}, 1000);
+            //     });
+            // }, 1500);
         }
     }
 
@@ -31,7 +37,6 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-
     }
 
     .navBar {
@@ -46,15 +51,31 @@
     li {
         float: left;
         margin: 10px;
-        /*right: 10px;*/
     }
 
-    li a {
+    .bar {
         display: block;
-        color: #ebebeb;
-        /*opacity: 0.8;*/
+        color: #ffffff;
         text-align: center;
         text-decoration: none;
     }
+
+    .active:after, .bar:after {
+        content: '';
+        display: block;
+        border-bottom: 1px solid #ffffff;
+        width: 0;
+        left: 0;
+        -webkit-transition: 0.5s ease;
+        transition: 0.5s ease;
+    }
+    .active:after {
+        width:0%;
+    }
+
+    .bar:hover:after {
+        width: 100%;
+    }
+
 
 </style>
