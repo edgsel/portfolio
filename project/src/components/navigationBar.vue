@@ -1,10 +1,10 @@
 <template>
     <div id="nav">
         <ul class="navBar">
-            <li><a class="bar active" href="#home">HOME</a></li>
-            <li><a class="bar" href="#whoAmI">WHO AM I?</a></li>
-            <li><a class="bar" href="#hobbies">HOBBIES</a></li>
-            <li><a class="bar" href="#contactMe">CONTACT ME</a></li>
+            <li><a @click="isSelected = 1" v-bind:class="{active: isSelected === 1}" class="bar" href="#home">HOME</a></li>
+            <li><a @click="isSelected = 2" v-bind:class="{active: isSelected === 2}" class="bar" href="#whoAmI">WHO AM I?</a></li>
+            <li><a @click="isSelected = 3" v-bind:class="{active: isSelected === 3}" class="bar" href="#hobbies">HOBBIES</a></li>
+            <li><a @click="isSelected = 4" v-bind:class="{active: isSelected === 4}" class="bar" href="#contactMe">CONTACT ME</a></li>
         </ul>
     </div>
 </template>
@@ -15,14 +15,21 @@
     export default {
         name: "navigationBar",
 
+        data: function() {
+            return {
+                isSelected: undefined,
+                isActive: false
+            }
+        },
+
         mounted() {
             $(".navBar").delay(800).animate({right: '7px', opacity: '1'}, 1000);
-            /* not implemented yet */
-            // setTimeout(function () {
-            //     $(".active").after(function () {
-            //         $(".active").animate({width: "100%"}, 1000);
-            //     });
-            // }, 1500);
+        },
+
+        methods: {
+            makeActiveTab() {
+                this.isActive = !this.isActive;
+            }
         }
     }
 
@@ -70,7 +77,9 @@
         transition: 0.5s ease;
     }
     .active:after {
-        width:0%;
+        width:100%;
+        border-bottom: 2px solid #ffffff;
+        transition: .5s;
     }
 
     .bar:hover:after {
