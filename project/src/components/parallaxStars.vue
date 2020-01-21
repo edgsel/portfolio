@@ -1,17 +1,17 @@
 <template>
     <div id="main">
-        <navigationBar></navigationBar>
+<!--        <navigationBar></navigationBar>-->
         <div class="grid-container">
         </div>
     </div>
 </template>
 
 <script>
-    import navigationBar from './navigationBar';
+    // import navigationBar from './navigationBar';
     export default {
         name: "parallaxStars",
         components: {
-            navigationBar
+            // navigationBar
         },
 
         methods: {

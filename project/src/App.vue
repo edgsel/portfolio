@@ -1,18 +1,28 @@
 <template>
   <div id="app">
-    <parallaxStars></parallaxStars>
+    <app-header></app-header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import parallaxStars  from './components/parallaxStars';
+  import app_header from "./components/header";
 
   export default {
     name: 'app',
     components: {
-      parallaxStars,
+      'app-header': app_header
+    },
+
+    data() {
+      return {
+        parallaxStars
+      }
     }
+
   }
+
 </script>
 
 <style>
@@ -26,7 +36,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #ffffff;
-    /*transition: 0.5s;*/
     letter-spacing: 2px;
   }
 
