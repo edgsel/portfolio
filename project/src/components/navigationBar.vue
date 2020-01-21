@@ -1,11 +1,14 @@
 <template>
     <div id="nav">
         <ul class="navBar">
-            <li><a @click="isSelected = 1" v-bind:class="{active: isSelected === 1}" class="bar" href="#home">HOME</a></li>
-            <li><a @click="isSelected = 2" v-bind:class="{active: isSelected === 2}" class="bar" href="#whoAmI">WHO AM I?</a></li>
-            <li><a @click="isSelected = 3" v-bind:class="{active: isSelected === 3}" class="bar" href="#hobbies">HOBBIES</a></li>
-            <li><a @click="isSelected = 4" v-bind:class="{active: isSelected === 4}" class="bar" href="#contactMe">CONTACT ME</a></li>
+            <li><a @click="setActive('home')" v-bind:class="{active: isActive('home')}" class="bar" href="#home">HOME</a></li>
+            <li><a @click="setActive('whoAmI')" v-bind:class="{active: isActive('whoAmI')}" class="bar" href="#whoAmI">WHO AM I?</a></li>
+            <li><a @click="setActive('hobbies')" v-bind:class="{active: isActive('hobbies')}" class="bar" href="#hobbies">HOBBIES</a></li>
+            <li><a @click="setActive('contactMe')" v-bind:class="{active: isActive('contactMe')}" class="bar" href="#contactMe">CONTACT ME</a></li>
         </ul>
+<!--        <nav class="navBar">-->
+<!--            <router-link></router-link>-->
+<!--        </nav>-->
     </div>
 </template>
 
@@ -16,10 +19,7 @@
         name: "navigationBar",
 
         data: function() {
-            return {
-                isSelected: undefined,
-                isActive: false
-            }
+            return { activeItem: 'home'}
         },
 
         mounted() {
@@ -27,15 +27,19 @@
         },
 
         methods: {
-            makeActiveTab() {
-                this.isActive = !this.isActive;
+            isActive(menuItem) {
+                return this.activeItem === menuItem
+            },
+            setActive(menuItem) {
+                this.activeItem = menuItem
             }
+
         }
     }
 
 </script>
 
-<style>
+<style scoped>
 
     #nav {
         display: flex;
@@ -78,7 +82,7 @@
     }
     .active:after {
         width:100%;
-        border-bottom: 2px solid #ffffff;
+        /*border-bottom: 2px solid #ffffff;*/
         transition: .5s;
     }
 
