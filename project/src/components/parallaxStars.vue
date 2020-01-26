@@ -1,17 +1,18 @@
 <template>
     <div id="main">
-<!--        <navigationBar></navigationBar>-->
         <div class="grid-container">
+            <welcome-message id="message"></welcome-message>
         </div>
     </div>
 </template>
 
 <script>
-    // import navigationBar from './navigationBar';
+    import welcomeMessage from "./welcomeMessage";
+
     export default {
         name: "parallaxStars",
         components: {
-            // navigationBar
+            'welcome-message' : welcomeMessage
         },
 
         methods: {
@@ -38,6 +39,18 @@
 </script>
 
 <style>
+
+    #message {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        width:100%;
+        font-size: 4vw
+    }
+
     body {
         margin: 0;
         padding: 0;
@@ -58,7 +71,6 @@
         grid-template-rows: 1fr;
         width: 100vw;
         height: 100vh;
-        /*min-height: 100vh;*/
         align-items: start;
     }
 
