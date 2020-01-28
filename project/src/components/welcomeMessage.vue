@@ -1,7 +1,9 @@
 <template>
     <div>
         <h1 class="screen-message"></h1>
+
     </div>
+
 </template>
 
 <script>
@@ -42,10 +44,11 @@
     }
 </script>
 
-<style >
+<style>
     .screen-message {
         display: none;
         letter-spacing: -4px;
         font-weight: 100;
     }
+
 </style>

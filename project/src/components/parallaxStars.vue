@@ -3,6 +3,7 @@
         <div class="grid-container">
             <welcome-message id="message"></welcome-message>
         </div>
+        <div class="grid-container"></div>
     </div>
 </template>
 
@@ -54,19 +55,17 @@
     body {
         margin: 0;
         padding: 0;
-        /*background-attachment: fixed;*/
     }
 
     #main {
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;
-        /*overflow-y: hidden;*/
+        background: fixed;
         background: radial-gradient(ellipse at bottom, #012950 0%, #000000 100%);
     }
 
     .grid-container {
-
         display: grid;
         position: relative;
         grid-template-rows: 1fr;
