@@ -1,6 +1,6 @@
 <template>
     <nav id="nav">
-        <ul class="navBar">
+        <ul>
             <li class="bar"><router-link to="/">HOME</router-link></li>
             <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
             <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
@@ -12,10 +12,10 @@
 <script>
     import $ from 'jquery'
     export default {
-        name: "header",
+        name: "app-header",
 
         mounted() {
-            $(".navBar").delay(800).animate({right: '7px', opacity: '1'}, 1000);
+            $("#nav").delay(800).animate({right: '7px', opacity: '1'}, 1000);
         },
     }
     
@@ -24,19 +24,16 @@
 <style scoped>
     #nav {
         display: flex;
+        z-index: 1;
+        position: fixed;
         justify-content: flex-end;
         font-weight: normal;
+        list-style-type: none;
+        font-size: 1.5vw;
         margin: 0;
         padding: 0;
         overflow: hidden;
-    }
-
-    .navBar {
-        z-index: 1;
-        position: absolute;
-        list-style-type: none;
-        overflow: hidden;
-        font-size: 1.5vw;
+        width: 100%;
         opacity: 0;
     }
 

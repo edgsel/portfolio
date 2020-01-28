@@ -12,27 +12,29 @@
 
         data() {
             return {
-                screenMessages: ["hi stranger", "welcome to my page","explore and..." ,"enjoy "]
+                screenMessages: ["hi stranger", "welcome to my page","explore it" ,"enjoy it"]
             }
         },
 
         mounted() {
-            // unfortunately, jquery method implemented, no solution for transition group w/o click event.
+            // unfortunately, jquery method implemented, no solution for transition group w/o click event found
             let h1 = $(".screen-message");
             let messages = this.screenMessages;
             let quoteIndex = -1;
 
             function showNextMessage() {
-                if (quoteIndex >= messages.length - 1) {
-                    quoteIndex = -1;
-                }
+                let fadeDelay = 1500;
+
+                if (quoteIndex >= messages.length - 1)  quoteIndex = -1;
 
                 ++quoteIndex;
+
+                if (messages[quoteIndex] === messages[messages.length - 1])  fadeDelay = 4000;
                 // recursively call function again when animation is done
                 h1.text(messages[quoteIndex])
-                    .fadeIn(2000)
-                    .delay(3000)
-                    .fadeOut(2000, showNextMessage);
+                    .fadeIn(2500)
+                    .delay(1000)
+                    .fadeOut(fadeDelay, showNextMessage);
             }
 
             setTimeout(showNextMessage, 2000);

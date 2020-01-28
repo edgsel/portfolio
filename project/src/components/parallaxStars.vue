@@ -33,7 +33,7 @@
         },
 
         mounted() {
-            this.createStars(150);
+            this.createStars(200);
         }
     }
 </script>
@@ -48,19 +48,20 @@
         text-align: center;
         height: 100%;
         width:100%;
-        font-size: 4vw
+        font-size: 4.5vw
     }
 
     body {
         margin: 0;
         padding: 0;
+        /*background-attachment: fixed;*/
     }
 
     #main {
         margin-left: auto;
         margin-right: auto;
-        overflow-x: hidden;
-        overflow-y: hidden;
+        overflow: hidden;
+        /*overflow-y: hidden;*/
         background: radial-gradient(ellipse at bottom, #012950 0%, #000000 100%);
     }
 
