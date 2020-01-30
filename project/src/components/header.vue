@@ -1,15 +1,18 @@
 <template>
     <div>
-        <div id="blurry-scroll"></div>
-        <nav id="nav">
-            <ul>
-                <li class="bar"><router-link to="/">HOME</router-link></li>
-                <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
-                <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
-                <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
-            </ul>
-        </nav>
+        <transition name="fade">
+            <!--  almost implemented -->
+            <nav id="nav" v-bind:style='{"background-color": (show ? "black" : "none" )}'>
+                <ul>
+                    <li class="bar"><router-link to="/">HOME</router-link></li>
+                    <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
+                    <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
+                    <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
+                </ul>
+            </nav>
+        </transition>
     </div>
+
 </template>
 
 <script>
@@ -17,28 +20,26 @@
     export default {
         name: "app-header",
 
+        data() {
+            return {
+                scrollPosition: null,
+                show: false
+            }
+        },
+
         methods: {
-            // not implemented yet. In progress.
-            changeNavbarColorOnScroll() {
-                let ref = this;
-                let scroll = $(window).scrollTop();
-                $(window).scroll(function () {
-                    // let scroll = $(window).scrollTop();
-                    // eslint-disable-next-line no-console
-                    console.log(scroll);
-                    if (scroll >= 200) ref.animateColorOfNav(1);
 
-                    if (scroll <= 100) ref.animateColorOfNav(0);
-                  })
-              },
+            updateScroll() {
+                this.scrollPosition = window.scrollY;
+                this.show = this.scrollPosition >= 100 ? true : false;
+                // eslint-disable-next-line no-console
+                console.log(this.show)
 
-            animateColorOfNav(opac) {
-                $("#blurry-scroll").animate({opacity: opac}, 300);
             }
         },
 
         mounted() {
-            this.changeNavbarColorOnScroll();
+            window.addEventListener('scroll', this.updateScroll);
             $("#nav").delay(800).animate({right: '7px', opacity: '1'}, 1000);
         },
     }
@@ -46,25 +47,7 @@
 </script>
 
 <style scoped>
-
-    #blurry-scroll {
-        top:0; left: 0;
-        width: 100%;
-        height: 6.5rem;
-        overflow: hidden;
-        position: fixed;
-        opacity: 0;
-        /*filter: blur(2px);*/
-        background-color: #012965;
-        /*opacity: 0.01;*/
-    }
-
-    /*nav {*/
-    /*    @extend #blurry-scroll;*/
-    /*    filter: none;*/
-    /*}*/
-
-    nav {
+    #nav {
         display: flex;
         z-index: 1;
         position: fixed;
@@ -78,6 +61,14 @@
         width: 100%;
         opacity: 0;
     }
+
+    /*.navColor {*/
+
+    /*    !*position: fixed;*!*/
+    /*    z-index: 1;*/
+    /*    background-color: red;*/
+    /*    height: 100px;*/
+    /*}*/
 
     li {
         float: left;
@@ -94,7 +85,7 @@
    .bar:after {
         content: '';
         display: block;
-        border-bottom: 1px solid #ffffff;
+        /*border-bottom: 1px solid #ffffff;*/
         width: 0;
         left: 0;
         -webkit-transition: 0.5s ease;
@@ -106,7 +97,7 @@
         color: #ffffff
     }
 
-    .router-link-exact-active {
+   nav li .router-link-exact-active {
         content: '';
         display: block;
         border-bottom: 1px solid #ffffff;
@@ -114,8 +105,19 @@
         transition: 0.5s ease;
     }
 
+   nav li .router-link-active {
+       content: '';
+       display: block;
+       -webkit-transition: 0.5s ease;
+       transition: 0.5s ease;
+   }
+
     .bar:hover:after {
         width: 100%;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
     }
 
 </style>
