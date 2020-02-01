@@ -1,16 +1,14 @@
 <template>
     <div>
-        <transition name="fade">
-            <!--  almost implemented -->
-            <nav id="nav" v-bind:style='{"background-color": (show ? "black" : "none" )}'>
-                <ul>
-                    <li class="bar"><router-link to="/">HOME</router-link></li>
-                    <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
-                    <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
-                    <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
-                </ul>
-            </nav>
-        </transition>
+        <!--  almost implemented -->
+        <nav id="nav" v-bind:class = "[show ? 'colorNav' : 'deleteColorNavSmoothly']">
+            <ul>
+                <li class="bar"><router-link to="/">HOME</router-link></li>
+                <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
+                <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
+                <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
+            </ul>
+        </nav>
     </div>
 
 </template>
@@ -31,17 +29,17 @@
 
             updateScroll() {
                 this.scrollPosition = window.scrollY;
-                this.show = this.scrollPosition >= 100 ? true : false;
+                this.show = this.scrollPosition >= 100;
                 // eslint-disable-next-line no-console
-                console.log(this.show)
+                // console.log(this.show)
 
-            }
+            },
         },
 
         mounted() {
             window.addEventListener('scroll', this.updateScroll);
             $("#nav").delay(800).animate({right: '7px', opacity: '1'}, 1000);
-        },
+        }
     }
     
 </script>
@@ -62,13 +60,15 @@
         opacity: 0;
     }
 
-    /*.navColor {*/
+    .colorNav {
+        background-color: red;
+        transition: 0.5s;
+    }
 
-    /*    !*position: fixed;*!*/
-    /*    z-index: 1;*/
-    /*    background-color: red;*/
-    /*    height: 100px;*/
-    /*}*/
+    .deleteColorNavSmoothly {
+        background-color: transparent;
+        transition: 0.5s;
+    }
 
     li {
         float: left;
@@ -114,10 +114,6 @@
 
     .bar:hover:after {
         width: 100%;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
     }
 
 </style>
