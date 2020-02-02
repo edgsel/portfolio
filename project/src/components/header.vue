@@ -2,12 +2,14 @@
     <div>
         <!--  almost implemented -->
         <nav id="nav" v-bind:class = "[show ? 'colorNav' : 'deleteColorNavSmoothly']">
-            <ul>
-                <li class="bar"><router-link to="/">HOME</router-link></li>
-                <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
-                <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
-                <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
-            </ul>
+            <div class="test">
+                <ul>
+                    <li class="bar"><router-link to="/">HOME</router-link></li>
+                    <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
+                    <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
+                    <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
+                </ul>
+            </div>
         </nav>
     </div>
 
@@ -20,7 +22,6 @@
 
         data() {
             return {
-                scrollPosition: null,
                 show: false
             }
         },
@@ -30,15 +31,12 @@
             updateScroll() {
                 this.scrollPosition = window.scrollY;
                 this.show = this.scrollPosition >= 100;
-                // eslint-disable-next-line no-console
-                // console.log(this.show)
-
             },
         },
 
         mounted() {
             window.addEventListener('scroll', this.updateScroll);
-            $("#nav").delay(800).animate({right: '7px', opacity: '1'}, 1000);
+            $(".test").delay(800).animate({"padding-right": '7px', opacity: '1'}, 1000);
         }
     }
     
@@ -50,24 +48,29 @@
         z-index: 1;
         position: fixed;
         justify-content: flex-end;
-        font-weight: normal;
+        font-weight: 300;
         list-style-type: none;
         font-size: 1.5vw;
-        margin: 0;
-        padding: 0;
+        padding-bottom: 15px;
+        top:0;
         overflow: hidden;
         width: 100%;
+    }
+
+    .test {
         opacity: 0;
     }
 
     .colorNav {
-        background-color: red;
-        transition: 0.5s;
+        background-color: rgba(1, 30, 60, 0.6);
+        height: inherit;
+        transition: 0.3s;
+        backdrop-filter: blur(2px); /* works in chrome, safari perfectly */
     }
 
     .deleteColorNavSmoothly {
         background-color: transparent;
-        transition: 0.5s;
+        transition: 0.3s;
     }
 
     li {
@@ -85,7 +88,7 @@
    .bar:after {
         content: '';
         display: block;
-        /*border-bottom: 1px solid #ffffff;*/
+        border-bottom: 1px solid #ffffff;
         width: 0;
         left: 0;
         -webkit-transition: 0.5s ease;
@@ -114,6 +117,12 @@
 
     .bar:hover:after {
         width: 100%;
+    }
+
+    @media screen and (max-width: 768px) {
+        #nav {
+            padding-bottom: 0;
+        }
     }
 
 </style>
