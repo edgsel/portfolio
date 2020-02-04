@@ -44,13 +44,16 @@
 
 <style scoped>
     #message {
+        z-index: 2;
         display: flex;
         position: absolute;
         justify-content: center;
+        vertical-align: center;
         align-items: center;
         text-align: center;
-        height: 100%;
-        width:100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         font-size: 4.5vw
     }
 

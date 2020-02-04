@@ -40,23 +40,13 @@
     }
 
     #main {
+        z-index: 2;
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;
         background: radial-gradient(ellipse at bottom, #012950 0%, #000000 100%);
         background-size: cover;
     }
-
-    /*#message {*/
-    /*    display: flex;*/
-    /*    position: relative;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-    /*    text-align: center;*/
-    /*    height: 100%;*/
-    /*    width:100%;*/
-    /*    font-size: 4.5vw*/
-    /*}*/
 
     .grid-container {
         display: grid;
