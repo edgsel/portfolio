@@ -7,7 +7,7 @@
                     <li class="bar"><router-link to="/">HOME</router-link></li>
                     <li class="bar"><router-link to="#whoAmI">WHO AM I?</router-link></li>
                     <li class="bar"><router-link to="#hobbies">HOBBIES</router-link></li>
-                    <li class="bar"><router-link to="#contactMe">CONTACT ME</router-link></li>
+                    <li class="bar"><router-link to="contactMe">CONTACT ME</router-link></li>
                 </ul>
             </div>
         </nav>
@@ -65,7 +65,7 @@
         background-color: rgba(1, 10, 28, 0.56);
         height: inherit;
         transition: 0.3s;
-        backdrop-filter: blur(5px); /* works in chrome, safari perfectly */
+        backdrop-filter: blur(3px); /* works in chrome, safari perfectly */
     }
 
     .deleteColorNavSmoothly {

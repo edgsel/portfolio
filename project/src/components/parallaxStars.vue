@@ -1,20 +1,13 @@
 <template>
     <div id="main">
-        <div class="grid-container">
-            <welcome-message id="message"></welcome-message>
-        </div>
         <div class="grid-container"></div>
     </div>
 </template>
 
 <script>
-    import welcomeMessage from "./welcomeMessage";
 
     export default {
         name: "parallaxStars",
-        components: {
-            'welcome-message' : welcomeMessage
-        },
 
         methods: {
             createStars(quantity) {
@@ -22,7 +15,7 @@
                     let star = document.createElement('div');
                     star.classList.add('star', 'type-' + String(this.randomNumber(1,3)));
                     star.style.left = String(this.randomNumber(1,99) + '%');
-                    star.style.bottom = String(this.randomNumber(1,99) + '%');
+                    star.style.bottom = String(this.randomNumber(1,200) + '%');
                     star.style.animationDuration = String(this.randomNumber(50,200) + 's');
                     document.getElementsByClassName("grid-container")[0].appendChild(star);
                 }
@@ -34,23 +27,12 @@
         },
 
         mounted() {
-            this.createStars(200);
+            this.createStars(170);
         }
     }
 </script>
 
 <style>
-
-    #message {
-        display: flex;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        height: 100%;
-        width:100%;
-        font-size: 4.5vw
-    }
 
     body {
         margin: 0;
@@ -61,9 +43,20 @@
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;
-        background: fixed;
         background: radial-gradient(ellipse at bottom, #012950 0%, #000000 100%);
+        background-size: cover;
     }
+
+    /*#message {*/
+    /*    display: flex;*/
+    /*    position: relative;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*    text-align: center;*/
+    /*    height: 100%;*/
+    /*    width:100%;*/
+    /*    font-size: 4.5vw*/
+    /*}*/
 
     .grid-container {
         display: grid;
@@ -86,19 +79,21 @@
     .type-1 {
         width: 1px;
         height: 1px;
+        transition: 0.5s;
     }
 
     .type-2 {
         width: 3px;
         height: 3px;
+        transition: 0.5s;
     }
 
     .type-3 {
         width: 4px;
         height: 4px;
+        transition: 0.5s;
     }
-
-
+    
     @keyframes move {
         0% { transform: translateY(1000px); }
         100% {transform: translateY(-1000px); }

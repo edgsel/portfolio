@@ -1,9 +1,7 @@
 <template>
-    <div>
+    <div id="message">
         <h1 class="screen-message"></h1>
-
     </div>
-
 </template>
 
 <script>
@@ -44,7 +42,18 @@
     }
 </script>
 
-<style>
+<style scoped>
+    #message {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        width:100%;
+        font-size: 4.5vw
+    }
+
     .screen-message {
         display: none;
         letter-spacing: -4px;

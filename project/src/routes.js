@@ -1,5 +1,7 @@
-import parallaxStars from "./components/parallaxStars";
+import contactMe from "./components/contactMe";
+import home from "./components/home";
 
 export default [
-     { path: '/', component: parallaxStars}
+     { path: '/', component: home },
+     { path: '/contactMe', component: contactMe },
 ]
